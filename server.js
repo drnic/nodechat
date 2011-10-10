@@ -4,7 +4,7 @@
 
 // Global settings
 var version = '0.3.18';
-var dev_port = 8000;
+var dev_port = process.env.PORT || 3000;
 var server_port = 80;
 var config_file = '/home/node/nodechat_config';
 
