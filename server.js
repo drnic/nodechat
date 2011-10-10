@@ -16,7 +16,7 @@ var _ = require('underscore')._
 
 // Include and configure winston for logging.
 var winston = require('winston');
-winston.add(winston.transports.File, { filename: process.env.NODE_ROOT + '/nodechat.log' });
+winston.add(winston.transports.File, { filename: 'nodechat.log' });
 
 // Include our own modules
 var models = require('./models/models')
@@ -248,26 +248,6 @@ path.exists(config_file, function (exists) {
         winston.info('no config found. starting in local dev mode');
         app.listen(dev_port);
         port = dev_port;
-
-        //Hack, delete the old css. For some reason the middleware is not recompiling
-        fs.unlink('./public/main.css', function (err) {
-            if (err) {
-                winston.warn('Unlink failed for ./public/main.css: ' + err);
-            }
-            else {
-                winston.info('Unlinked ./public/main.css');
-            }
-        });
-
-        options = {
-            host: 'localhost',
-            port: port,
-            path: '/main.css'
-        };
-
-        http.get(options, function (res) {
-            winston.info('GET main.css complete');
-        });
     }
     else {
         winston.info('[main] config found. starting in server mode');
