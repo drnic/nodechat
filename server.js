@@ -16,7 +16,7 @@ var _ = require('underscore')._
 
 // Include and configure winston for logging.
 var winston = require('winston');
-winston.add(winston.transports.File, { filename: process.env.current_path + '/nodechat.log' });
+winston.add(winston.transports.File, { filename: process.env.node_root + '/nodechat.log' });
 
 // Include our own modules
 var models = require('./models/models')
