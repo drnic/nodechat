@@ -258,7 +258,7 @@ path.exists(config_file, function (exists) {
     winston.info('[main] nodechat v' + version + ' listening on port ' + port);
     app.get('/', restrict, function (req, res) {
         res.render('index', {
-            locals: { name: req.session.user.name, port: port, hashpassword: JSON.stringify(req.session.hashpassword), version: version  }
+            locals: { name: req.session.user.name, port: server_port, hashpassword: JSON.stringify(req.session.hashpassword), version: version  }
         });
     });
 });
